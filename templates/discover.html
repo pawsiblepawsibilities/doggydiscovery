@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<title>Check which breed your dog is and discover more about dogs!</title>
+<div>
+  <head>
+    <style>
+        .portrait-button {
+            width: 200px;
+            height: 300px;
+            background-image: url("path/to/your/portrait-image.jpg");
+            background-size: cover;
+            background-position: center;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .portrait-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <button class="portrait-button">Discover</button>
+    <img src="autumndog.jpg" alt="Portrait Image">
+</body>
+</div>
+{% endblock %}

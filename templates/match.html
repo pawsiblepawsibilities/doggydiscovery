@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<title>Complete this survey to find your best match!</title>
+<div>
+  <label for="category-select">Select a Category:</label>
+    <select id="category-select">
+        <option value="working">Working Dogs</option>
+        <option value="hunting">Hunting Dogs</option>
+        <option value="herding">Herding Dogs</option>
+        <option value="search-rescue">Search and Rescue Dogs</option>
+        <option value="sports">Sports and Competitions</option>
+        <option value="therapy">Therapy Dogs</option>
+        <option value="detection">Detection Dogs</option>
+        <option value="racing">Racing Dogs</option>
+        <option value="livestock">Livestock Guardian Dogs</option>
+        <option value="show">Show Dogs</option>
+        <option value="circus">Circus and Entertainment Dogs</option>
+        <option value="environmental">Environmental Dogs</option>
+        <option value="assistance">Assistance Dogs</option>
+    </select>
+</div>
+{% endblock %}
