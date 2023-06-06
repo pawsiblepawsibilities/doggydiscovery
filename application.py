@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 application = Flask(__name__)
 
@@ -17,6 +17,12 @@ def about():
 @application.route('/donation')
 def donation():
     return render_template('donation.html')
+
+
+@application.route('/questionnaire', methods=["POST"])
+def questionnaire():
+    result = request.form
+    return render_template('questionnaire.html')
 
 
 @application.route('/match')
