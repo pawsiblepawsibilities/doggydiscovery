@@ -43,13 +43,33 @@
               background: #4CAF50;
               cursor: pointer;
             }
+            .form-container {
+              max-height: 400px;
+              overflow-y: auto;
+              padding: 10px;
+            }
+            body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
 
+        .container {
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .content {
+            height: 2000px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            font-size: 24px;
+        }
         </style>
     </head>
     <body>
     <h1>Find your match! </h1>
     <div class="form-container">
-
         <form action="/questionnaire" method="post">
             <div>
                 <label>Question 1: How active on a scale 1-10</label>
@@ -67,41 +87,41 @@
             </div>
             <div>&nbsp;</div>
             <div>
-                <label>Question 2: Do you have small children at home?</label>
+                <label>Question 3: Do you have small children at home?</label>
                 <input type="range" name="aggression" min="1" max="10" value="{{aggression or 5}}" class="slider"
                        id="slider3">
             </div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>
-                <label>Question 3: On a scale of 1-10, how much space can you dedication for your dog? </label>
+                <label>Question 4: On a scale of 1-10, how much space can you dedication for your dog? </label>
                 <input type="range" name="space" min="1" max="10" value="{{space or 5}}" class="slider" id="slider4">
             </div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>
-                <label>Question 4: On a scale of 1-10, how much time can you give your dog? </label>
+                <label>Question 5: On a scale of 1-10, how much time can you give your dog? </label>
                 <input type="range" name="time_commitment" min="1" max="10" value="{{time_commitment or 5}}"
                        class="slider" id="slider5">
             </div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <button type="submit">Submit</button>
+            <button type="submit" style="border: none; border-radius: 20px; padding: 10px 20px; background-color: #e09f7e; color: black; font-size:30px;font-weight: bold;">Submit 🐾</button>
             <div>
                 <table>
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Match</th>
+                        <th>Description</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for breed in breeds %}
                     <tr>
-                        <td>{{ breed.id }}</td>
                         <td>{{ breed.name }}</td>
                         <td>{{ breed.match }}</td>
+                        <td>{{ breed.description }}</td>
                     </tr>
                     {% endfor %}
                     </tbody>

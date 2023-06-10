@@ -5,7 +5,8 @@
     "active": 7,
     "aggression": 8,
     "space": 10,
-    "time_commitment": 10
+    "time_commitment": 10,
+    "description": "The Doberman Pinscher is a powerful and intelligent dog breed known for its loyalty and athleticism, but they can be potentially dangerous if not properly trained and socialized. With their protective nature, it is crucial for owners to provide appropriate guidance and socialization to ensure they are well-behaved and safe in various situations."
   },
   {
     "name": "cavoodle",
@@ -13,7 +14,8 @@
     "active": 2,
     "aggression": 1,
     "space": 0,
-    "time_commitment": 0
+    "time_commitment": 0,
+    "description": "Cavoodles, also called Cavapoos, are affectionate designer dogs that combine the traits of Cavalier King Charles Spaniels and Poodles. They are friendly, sociable, and great with families, while their low-shedding coats and intelligence make them popular as hypoallergenic and trainable companions."
   },
   {
     "name": "african_wild_dog",
@@ -21,6 +23,7 @@
     "active": 10,
     "aggression": 10,
     "space": 0,
-    "time_commitment": 0
+    "time_commitment": 0,
+    "description": "African wild dogs are highly social carnivores native to sub-Saharan Africa. With their distinctive colorful coats and exceptional teamwork, they are efficient hunters, playing a vital role in their ecosystems. Unfortunately, they are endangered, highlighting the need for conservation efforts to protect these remarkable animals."
   }
 ]
