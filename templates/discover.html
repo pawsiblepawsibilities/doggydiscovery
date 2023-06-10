@@ -3,72 +3,112 @@
 {% block content %}
 <title>Check which breed your dog is and discover more about dogs!</title>
 <div>
-  <head>
-    <style>
-    .slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 50%;
-      height: 10px;
-      border-radius: 5px;
-      background: linear-gradient(to right, #c00200, #c00200);
-      outline: none;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-    .slider:hover {
-      opacity: 1;
-    }
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 40px;
-      height: 40px;
-      background: url('../static/paw.png') no-repeat center center;
-      background-size: cover;
-      cursor: pointer;
-    }
-    .slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #4CAF50;
-      cursor: pointer;
-      .slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #4CAF50;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1>Find your match! </h1>
+    <head>
+        <style>
+            .slider {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 50%;
+              height: 20px;
+              border-radius: 5px;
+              background: linear-gradient(to right, #CBBE01, red);
+              outline: none;
+              opacity: 0.5;
+              transition: opacity 0.9;
+              border: 1px solid rgba(0, 0, 0, 0.3); /* Add border */
+              box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3); /* Add box-shadow */
+            }
+            .slider:hover {
+              opacity: 1;
+            }
+            .slider::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 40px;
+              height: 40px;
+              background: url('../static/paw.png') no-repeat center center;
+              background-size: cover;
+              cursor: pointer;
+            }
+            .slider::-moz-range-thumb {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background: #4CAF50;
+              cursor: pointer;
+              .slider::-moz-range-thumb {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background: #4CAF50;
+              cursor: pointer;
+            }
 
-  <form action="/questionnaire" method="post">
-    <div>
-      <label>Question 1: On a scale from 1-10 how much do you exercise 1 being (no day) 10 being super active </label>
-      <input type="range" name="question1" min="1" max="10" value="5" class="slider" id="slider2">
+        </style>
+    </head>
+    <body>
+    <h1>Find your match! </h1>
+    <div class="form-container">
+
+        <form action="/questionnaire" method="post">
+            <div>
+                <label>Question 1: How active on a scale 1-10</label>
+                <img src="../static/couch_potato.png" alt="Image 1" class="" width="65" height="65">
+                <input type="range" name="active" min="1" max="10" value="{{active or 5}}" class="slider" id="slider1">
+                <img src="../static/active_runner.jpg" alt="Image 2" width="70" height="70">
+            </div>
+            <div>&nbsp;</div>
+            <div>
+                <label>Question 2: How much tolerant to shedding?</label>
+                <img src="../static/hairless_dog.png" alt="Image 1" class="" width="55" height="65">
+                <input type="range" name="shedding" min="1" max="10" value="{{shedding or 5}}" class="slider"
+                       id="slider2">
+                <img src="../static/hairy_dog.jpeg" alt="Image 1" class="" width="65" height="65">
+            </div>
+            <div>&nbsp;</div>
+            <div>
+                <label>Question 2: Do you have small children at home?</label>
+                <input type="range" name="aggression" min="1" max="10" value="{{aggression or 5}}" class="slider"
+                       id="slider3">
+            </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>
+                <label>Question 3: On a scale of 1-10, how much space can you dedication for your dog? </label>
+                <input type="range" name="space" min="1" max="10" value="{{space or 5}}" class="slider" id="slider4">
+            </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>
+                <label>Question 4: On a scale of 1-10, how much time can you give your dog? </label>
+                <input type="range" name="time_commitment" min="1" max="10" value="{{time_commitment or 5}}"
+                       class="slider" id="slider5">
+            </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <button type="submit">Submit</button>
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Match</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for breed in breeds %}
+                    <tr>
+                        <td>{{ breed.id }}</td>
+                        <td>{{ breed.name }}</td>
+                        <td>{{ breed.match }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
     </div>
-    <div>&nbsp;</div>
-    <div>
-      <label>Question 2: How would you rate XYZ?</label>
-      <input type="range" name="question2" min="1" max="10" value="5" class="slider" id="slider3">
-    </div>
-    <div>&nbsp;</div>
-    <div>
-      <label>Question 2: How would you rate XYZ?</label>
-      <input type="range" name="question2" min="1" max="10" value="5" class="slider" id="slider3">
-    </div>
-    <div>&nbsp;</div>
-    <div>
-      <label>Question 2: How would you rate XYZ?</label>
-      <input type="range" name="question2" min="1" max="10" value="5" class="slider" id="slider3">
-    </div>
-    <div>&nbsp;</div>
-    <button type="submit">Submit</button>
-  </form>
-</body>
+    </body>
 </div>
 {% endblock %}

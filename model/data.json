@@ -1,0 +1,26 @@
+[
+  {
+    "name": "doberman",
+    "shedding": 3,
+    "active": 7,
+    "aggression": 8,
+    "space": 10,
+    "time_commitment": 10
+  },
+  {
+    "name": "cavoodle",
+    "shedding": 1,
+    "active": 2,
+    "aggression": 1,
+    "space": 0,
+    "time_commitment": 0
+  },
+  {
+    "name": "african_wild_dog",
+    "shedding": 10,
+    "active": 10,
+    "aggression": 10,
+    "space": 0,
+    "time_commitment": 0
+  }
+]
