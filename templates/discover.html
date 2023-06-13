@@ -47,66 +47,77 @@
               max-height: 400px;
               overflow-y: auto;
               padding: 10px;
+              font-color: red;
             }
             body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            .container {
+                height: 100vh;
+                overflow-y: scroll;
+            }
+            .content {
+                height: 2000px;
+                background-color: #f1f1f1;
+                padding: 20px;
+                font-size: 24px;
+            }
 
-        .container {
-            height: 100vh;
-            overflow-y: scroll;
-        }
-
-        .content {
-            height: 2000px;
-            background-color: #f1f1f1;
-            padding: 20px;
-            font-size: 24px;
-        }
         </style>
     </head>
     <body>
-    <h1>Find your match! </h1>
+    <h1>On a scale from 1 to 10.. </h1>
     <div class="form-container">
         <form action="/questionnaire" method="post">
-            <div>
-                <label>Question 1: How active on a scale 1-10</label>
-                <img src="../static/couch_potato.png" alt="Image 1" class="" width="65" height="65">
+            <div>how active are you?</div>
+            <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background-color: #f2f2f2;border: 2px solid #000000;">
+                &nbsp;
+                <img src="../static/sleepy.png" alt="Image 1" class="" width="10%" height="10%"> &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="range" name="active" min="1" max="10" value="{{active or 5}}" class="slider" id="slider1">
-                <img src="../static/active_runner.jpg" alt="Image 2" width="70" height="70">
+                <img src="../static/flying_dog.png" alt="Image 2" width="10%" height="10%">
             </div>
-            <div>&nbsp;</div>
-            <div>
-                <label>Question 2: How much tolerant to shedding?</label>
-                <img src="../static/hairless_dog.png" alt="Image 1" class="" width="55" height="65">
+            <div>How much okay are you on shedding</div>
+            <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background-color: #f2f2f2;border: 2px solid #000000;">
+                <img src="../static/hairless.png" alt="Image 1" class="" width="10%" height="10%">&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="range" name="shedding" min="1" max="10" value="{{shedding or 5}}" class="slider"
-                       id="slider2">
-                <img src="../static/hairy_dog.jpeg" alt="Image 1" class="" width="65" height="65">
+                       id="slider2">&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="../static/komondor.png" alt="Image 1" class="" width="8%" height="8%">
             </div>
             <div>&nbsp;</div>
             <div>
-                <label>Question 3: Do you have small children at home?</label>
-                <input type="range" name="aggression" min="1" max="10" value="{{aggression or 5}}" class="slider"
-                       id="slider3">
-            </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>
-                <label>Question 4: On a scale of 1-10, how much space can you dedication for your dog? </label>
-                <input type="range" name="space" min="1" max="10" value="{{space or 5}}" class="slider" id="slider4">
+                <div>How okay are you with aggressive pets?</div>
+                <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background-color: #f2f2f2;border: 2px solid #000000;">
+                    <img src="../static/passive.png" alt="Image 1" class="" width="10%" height="10%">
+                    <input type="range" name="aggression" min="1" max="10" value="{{shedding or 5}}" class="slider"
+                           id="slider3">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="../static/angry.png" alt="Image 1" class="" width="8%" height="8%">
+                </div>
             </div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>
-                <label>Question 5: On a scale of 1-10, how much time can you give your dog? </label>
+                <div>How much of space is available to your pet?</div>
+                    <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background-color: #f2f2f2;border: 2px solid #000000;">
+                    <img src="../static/dog_in_a_box.png" alt="Image 1" class="" width="10%" height="10%">
+                    <input type="range" name="space" min="1" max="10" value="{{shedding or 5}}" class="slider"
+                           id="slider4">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="../static/palace.png" alt="Image 1" class="" width="10%" height="10%">
+                </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>
+                <div>Question 5: On a scale of 1-10, how much time can you give your dog?</div>
                 <input type="range" name="time_commitment" min="1" max="10" value="{{time_commitment or 5}}"
                        class="slider" id="slider5">
             </div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <button type="submit" style="border: none; border-radius: 20px; padding: 10px 20px; background-color: #e09f7e; color: black; font-size:30px;font-weight: bold;">Submit 🐾</button>
+            <button type="submit"
+                    style="border: none; border-radius: 20px; padding: 10px 20px; background-color: #e09f7e; color: black; font-size:30px;font-weight: bold;">
+                Submit 🐾
+            </button>
             <div>
                 <table>
                     <thead>
