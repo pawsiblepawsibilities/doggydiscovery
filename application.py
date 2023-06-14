@@ -20,11 +20,15 @@ def donation():
     return render_template('donation.html')
 
 
+def get(value):
+    return 1 if value == 0 else value
+
+
 @application.route('/questionnaire', methods=["POST"])
 def questionnaire():
     result = request.form
-    with open('model/data.json', 'r') as file: # open a file in read only way
-        breeds = json.load(file) # read the data and assign it to a variable
+    with open('model/data.json', 'r') as file:  # open a file in read only way
+        breeds = json.load(file)  # read the data and assign it to a variable
 
         # read the users preferred values
         user_active_value = int(result['active'])
@@ -42,14 +46,16 @@ def questionnaire():
             breed_space_value = breed["space"]
             breed_time_commitment_value = breed["time_commitment"]
             print(f"Breed: {breed_name}")
-            active_distance = abs((breed_active_value - user_active_value) / user_active_value)
-            shedding_distance = abs((breed_shedding_value - user_shedding_value) / user_shedding_value)
-            aggression_distance = abs((breed_aggression_value - user_aggression_value) / user_aggression_value)
-            space_distance = abs((breed_space_value - user_space_value) / user_space_value)
-            time_commitment_distance = abs((breed_time_commitment_value - user_time_commitment_value) / user_time_commitment_value)
-            breeds[i]["match"] = (active_distance + shedding_distance + aggression_distance + space_distance + time_commitment_distance)
+            active_distance = abs((breed_active_value - user_active_value) / get(user_active_value))
+            shedding_distance = abs((breed_shedding_value - user_shedding_value) / get(user_shedding_value))
+            aggression_distance = abs((breed_aggression_value - user_aggression_value) / get(user_aggression_value))
+            space_distance = abs((breed_space_value - user_space_value) / get(user_space_value))
+            time_commitment_distance = abs(
+                (breed_time_commitment_value - user_time_commitment_value) / get(user_time_commitment_value))
+            breeds[i]["match"] = (
+                        active_distance + shedding_distance + aggression_distance + space_distance + time_commitment_distance)
         # sort the values such that the closest value is first
-        breeds = sorted(breeds, key=lambda x: x["match"])
+        breeds = sorted(breeds, key=lambda x: x["match"])[:20]
     return render_template('discover.html',
                            breeds=breeds,
                            active=user_active_value,
@@ -63,6 +69,11 @@ def questionnaire():
 @application.route('/match')
 def match():
     return render_template('match.html')
+
+
+@application.route('/gallery')
+def gallery():
+    return render_template('gallery.html')
 
 
 @application.route('/discover')

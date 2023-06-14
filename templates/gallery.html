@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        a {
+          text-decoration: none;
+          display: inline-block;
+          padding: 8px 16px;
+        }
+
+        a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+
+        .previous {
+          background-color: #f1f1f1;
+          color: black;
+        }
+
+        .next {
+          background-color: #04AA6D;
+          color: white;
+        }
+
+        .round {
+          border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="modal">
+    <!-- Modal content -->
+    <img id="current-image" src="" alt="Image Gallery">
+    <div class="button-container">
+        <a href="#"  id="prev-button" class="previous">&laquo; Previous</a>
+        <a href="#" id="next-button" class="next">Next &raquo;</a>
+    </div>
+</div>
+
+<script>
+        var currentIndex = 1;
+        var totalImages = 50;
+
+        var prevButton = document.getElementById('prev-button');
+        var nextButton = document.getElementById('next-button');
+        var currentImage = document.getElementById('current-image');
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var breedName = urlParams.get('breed');
+
+        // Use the breedName variable to determine the images for the specific breed
+        // For example:
+        // var imagesPath = 'images/' + breedName + '/'; // Assuming the images are stored in a directory per breed
+
+        prevButton.addEventListener('click', function () {
+            if (currentIndex > 1) {
+                currentIndex--;
+                currentImage.src = "../static/images/" +breedName+"/" + currentIndex + '.jpg';
+            }
+        });
+
+        nextButton.addEventListener('click', function () {
+            if (currentIndex < totalImages) {
+                currentIndex++;
+                currentImage.src = "../static/images/" +breedName+"/"+ currentIndex + '.jpg';
+            }
+        });
+        window.onload = function () {
+            nextButton.click();
+        };
+</script>
+</body>
+</html>
