@@ -66,21 +66,17 @@
         var urlParams = new URLSearchParams(window.location.search);
         var breedName = urlParams.get('breed');
 
-        // Use the breedName variable to determine the images for the specific breed
-        // For example:
-        // var imagesPath = 'images/' + breedName + '/'; // Assuming the images are stored in a directory per breed
-
         prevButton.addEventListener('click', function () {
             if (currentIndex > 1) {
                 currentIndex--;
-                currentImage.src = "../static/images/" +breedName+"/" + currentIndex + '.jpg';
+                currentImage.src = "http://images.doggydiscovery.com/" +breedName+"/" + currentIndex + '.jpg';
             }
         });
 
         nextButton.addEventListener('click', function () {
             if (currentIndex < totalImages) {
                 currentIndex++;
-                currentImage.src = "../static/images/" +breedName+"/"+ currentIndex + '.jpg';
+                currentImage.src = "http://images.doggydiscovery.com/" +breedName+"/" + currentIndex + '.jpg';
             }
         });
         window.onload = function () {

@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>Check which breed your dog is and discover more about dogs!</title>
 <div>
     <head>
@@ -31,13 +30,7 @@
               background-size: cover;
               cursor: pointer;
             }
-            .slider::-moz-range-thumb {
-              width: 20px;
-              height: 20px;
-              border-radius: 50%;
-              background: #4CAF50;
-              cursor: pointer;
-              .slider::-moz-range-thumb {
+           .slider::-moz-range-thumb {
               width: 20px;
               height: 20px;
               border-radius: 50%;
@@ -45,7 +38,7 @@
               cursor: pointer;
             }
             .form-container {
-              max-height: 400px;
+              max-height: 750px;
               overflow-y: auto;
               padding: 10px;
               font-color: red;
@@ -65,69 +58,159 @@
                 padding: 20px;
                 font-size: 24px;
             }
+            .scale-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(white, lightgrey);
+                border: 2px solid #000000;
+            }
+            .column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left-image {
+                text-align: right;
+                margin-left: auto;
+            }
+
+            .center-column {
+                text-align: center;
+            }
+
+            .right-image {
+                text-align: left;
+                margin-right: auto;
+            }
+
         </style>
     </head>
     <body>
     <h1>On a scale from 1 to 10.. </h1>
     <div class="form-container">
         <form action="/questionnaire" method="post">
-            <div>how active are you?</div>
-            <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background: linear-gradient(white, lightgrey);border: 2px solid #000000;">
-                &nbsp;
-                <img src="../static/sleepy.png" alt="Image 1" class="" width="10%" height="10%"> &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="range" name="active" min="0" max="10" value="{{active or 5}}" class="slider" id="slider1">
-                <img src="../static/flying_dog.png" alt="Image 2" width="10%" height="10%">
+            <div>
+                <div>how active are you?</div>
+                <div class="scale-box">
+                    <div class="column left-image" style="width: 10%;">
+                        <div class="checkbox-wrapper-10">
+                            <input type="checkbox"/>
+                        </div>
+                    </div>
+                    <div class="column left-image" style="width: 23%;">
+                        <img src="../static/sleepy.png" width="100%" height="100%">
+                    </div>
+                    <div class="column center-column" style="width: 100%;">
+                        <input type="range" style="width:100%" name="active" min="0" max="10" value="{{active or 5}}"
+                               class="slider">
+                    </div>
+                    <div class="column right-image" style="width: 23%;">
+                        <img src="../static/flying_dog.png" alt="Image 2" width="100%" height="100%">
+                    </div>
+                </div>
             </div>
-            <div>How much okay are you on shedding</div>
-            <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background: linear-gradient(white, lightgrey);border: 2px solid #000000;">
-                <img src="../static/hairless.png" alt="Image 1" class="" width="10%" height="10%">&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="range" name="shedding" min="0" max="10" value="{{shedding or 5}}" class="slider"
-                       id="slider2">&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="../static/komondor.png" alt="Image 1" class="" width="8%" height="8%">
+            <div>
+                <div>How much okay are you on shedding</div>
+                <div class="scale-box">
+                    <div class="column left-image" style="width: 10%;">
+                        <div class="checkbox-wrapper-10">
+                            <input type="checkbox"/>
+                        </div>
+                    </div>
+                    <div class="column left-image" style="width: 23%;">
+                        <img src="../static/hairless.png" width="100%" height="100%">
+                    </div>
+                    <div class="column center-column" style="width: 100%;">
+                        <input type="range" style="width:100%" name="shedding" min="0" max="10"
+                               value="{{shedding or 5}}"
+                               class="slider">
+                    </div>
+                    <div class="column right-image" style="width: 23%;">
+                        <img src="../static/komondor.png" alt="Image 1" class="" width="100%" height="100%">
+                    </div>
+                </div>
             </div>
-            <div>&nbsp;</div>
             <div>
                 <div>How okay are you with aggressive pets?</div>
-                <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background: linear-gradient(white, lightgrey);border: 2px solid #000000;">
-                    <img src="../static/passive.png" alt="Image 1" class="" width="10%" height="10%">
-                    <input type="range" name="aggression" min="0" max="10" value="{{aggression or 5}}" class="slider"
-                           id="slider3">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="../static/angry.png" alt="Image 1" class="" width="8%" height="8%">
+                <div class="scale-box">
+                    <div class="column left-image" style="width: 10%;">
+                        <div class="checkbox-wrapper-10">
+                            <input type="checkbox"/>
+                        </div>
+                    </div>
+                    <div class="column left-image" style="width: 23%;">
+                        <img src="../static/passive.png" width="100%" height="100%">
+                    </div>
+                    <div class="column center-column" style="width: 100%;">
+                        <input type="range" style="width:100%" name="aggression" min="0" max="10"
+                               value="{{aggression or 5}}" class="slider">
+                    </div>
+                    <div class="column right-image" style="width: 23%;">
+                        <img src="../static/angry.png" alt="Image 1" class="" width="80%" height="80%">
+                    </div>
                 </div>
             </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
             <div>
                 <div>How much of space is available to your pet?</div>
-                <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background: linear-gradient(white, lightgrey);border: 2px solid #000000;">
-                    <img src="../static/dog_in_a_box.png" alt="Image 1" class="" width="10%" height="10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="range" name="space" min="0" max="10" value="{{space or 5}}" class="slider"
-                           id="slider4">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="../static/palace.png" alt="Image 1" class="" width="12%" height="12%">
+                <div class="scale-box">
+                    <div class="column left-image" style="width: 10%;">
+                        <div class="checkbox-wrapper-10">
+                            <input type="checkbox"/>
+                        </div>
+                    </div>
+                    <div class="column left-image" style="width: 23%;">
+                        <img src="../static/dog_in_a_box.png" width="100%" height="100%">
+                    </div>
+                    <div class="column center-column" style="width: 100%;">
+                        <input type="range" style="width:100%" name="space" min="0" max="10"
+                               value="{{space or 5}}"
+                               class="slider">
+                    </div>
+                    <div class="column right-image" style="width: 23%;">
+                        <img src="../static/palace.png" alt="Image 2" width="100%" height="100%">
+                    </div>
                 </div>
             </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
             <div>
                 <div>How much of time are you willing to spend?</div>
-                <div style="display: inline-block; border-radius: 10px; overflow: hidden;display: flex; align-items: center; justify-content: center; background: linear-gradient(white, lightgrey);border: 2px solid #000000;">
-                    <img src="../static/5mins.png" alt="Image 1" class="" width="8%" height="8%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="range" name="time_commitment" min="0" max="10" value="{{time_commitment or 5}}" class="slider"
-                           id="slider5">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="../static/24hours.png" alt="Image 1" class="" width="12%" height="12%">
+                <div class="scale-box">
+                    <div class="column left-image" style="width: 10%;">
+                        <div class="checkbox-wrapper-10">
+                            <input type="checkbox"/>
+                        </div>
+                    </div>
+                    <div class="column left-image" style="width: 23%;">
+                        <img src="../static/5mins.png" width="70%" height="70%">
+                    </div>
+                    <div class="column center-column" style="width: 100%;">
+                        <input type="range" style="width:100%" name="time_commitment" min="0" max="10"
+                               value="{{time_commitment or 5}}" class="slider">
+                    </div>
+                    <div class="column right-image" style="width: 23%;">
+                        <img src="../static/24hours.png" alt="Image 2" width="100%" height="100%">
+                    </div>
                 </div>
             </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <button type="submit"
-                    style="border: none; border-radius: 20px; padding: 10px 20px; background-color: #e09f7e; color: black; font-size:30px;font-weight: bold;">
-                Submit 🐾
-            </button>
+            <br/>
+            <div class="column center-column" style="width: 100%;">
+                <button type="submit"
+                        style="border: 1; border-radius: 20px; padding: 10px 20px; background-color: #87CEEB; color: blue; font-size:30px;font-weight: bold;">
+                    Submit 🐾
+                </button>
+            </div>
+            <br/>
             <div>
                 <table border="1">
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th id="result-table">Name</th>
                         <th>Description</th>
                         <th>View Galary</th>
                     </tr>
@@ -138,8 +221,9 @@
                         <td>{{ breed.name }}</td>
                         <td>{{ breed.description }}</td>
                         <td>
-                             <div style="width: 100%; height: 100%;">
-                                <input type="button" onclick="openModal('{{ breed.name }}')" style="width: 100%; height: 100%;" value="View In Galary"/>
+                            <div style="width: 100%; height: 100%;">
+                                <input type="button" onclick="openModal('{{ breed.name }}')"
+                                       style="width: 100%; height: 100%;" value="View Photos"/>
                             </div>
                     </tr>
                     {% endfor %}
