@@ -1,7 +1,7 @@
 import os
 import zipfile
 
-model_folder = "data"
+model_folder = "data/model"
 output_zip = "doggy.zip"
 this_folder = "."
 variables = f"{model_folder}/variables"
