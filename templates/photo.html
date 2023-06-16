@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<title>Check which breed your dog is and discover more about dogs!</title>
+<div>
+    <body>
+    <div class="form-container">
+        <form action="/photo" method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <input type="submit" value="Upload">
+            <img src="{{ url_for('static', filename='temp.jpg') }}" alt="Uploaded Image">
+        </form>
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th id="result-table">Name</th>
+                <th>Description</th>
+                <th>View Galary</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for breed in breeds %}
+            <tr>
+                <td>{{ breed.name }}</td>
+                <td>{{ breed.description }}</td>
+                <td>
+                    <div style="width: 100%; height: 100%;">
+                        <input type="button" onclick="openModal('{{ breed.name }}')"
+                               style="width: 100%; height: 100%;" value="View Photos"/>
+                    </div>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        function openModal(breedName) {
+            var url = "./gallery?breed=" + encodeURIComponent(breedName);
+            window.open(url, "_blank", "width=600,height=600");
+        }
+    </script>
+    </body>
+</div>
+{% endblock %}

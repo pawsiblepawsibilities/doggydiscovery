@@ -43,12 +43,24 @@
         .round {
           border-radius: 50%;
         }
+      .frame {
+        border: 3px solid #ccc;
+        background: #eee;
+        margin: auto;
+        padding: 15px 10px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
     </style>
 </head>
 <body>
 <div class="modal">
     <!-- Modal content -->
-    <img id="current-image" src="" alt="Image Gallery">
+    <div class="frame">
+        <img id="current-image" src="" alt="Image Gallery">
+    </div>
     <div class="button-container">
         <a href="#"  id="prev-button" class="previous">&laquo; Previous</a>
         <a href="#" id="next-button" class="next">Next &raquo;</a>

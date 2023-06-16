@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import json
+import predict
+import os
 
 application = Flask(__name__)
 
@@ -27,7 +29,7 @@ def get(value):
 @application.route('/questionnaire', methods=["POST"])
 def questionnaire():
     result = request.form
-    with open('model/data.json', 'r') as file:  # open a file in read only way
+    with open('data/breeds.json', 'r') as file:  # open a file in read only way
         breeds = json.load(file)  # read the data and assign it to a variable
 
         # read the users preferred values
@@ -53,7 +55,7 @@ def questionnaire():
             time_commitment_distance = abs(
                 (breed_time_commitment_value - user_time_commitment_value) / get(user_time_commitment_value))
             breeds[i]["match"] = (
-                        active_distance + shedding_distance + aggression_distance + space_distance + time_commitment_distance)
+                    active_distance + shedding_distance + aggression_distance + space_distance + time_commitment_distance)
         # sort the values such that the closest value is first
         breeds = sorted(breeds, key=lambda x: x["match"])[:20]
     return render_template('discover.html',
@@ -75,6 +77,23 @@ def match():
 def gallery():
     return render_template('gallery.html')
 
+
+@application.route('/photo', methods=['POST', 'GET'])
+def photo():
+    breeds = []
+    if 'image' in request.files:
+        try:
+            image = request.files['image']
+            basepath = os.path.dirname(__file__)
+            filepath = os.path.join(basepath, 'static', 'temp.jpg')
+            image.save(filepath)
+            finds = [predict.top_predictions(filepath)]
+            all_breeds = json.load(open('data/breeds.json', 'r'))  # read the data and assign it to a variable
+            breeds = [item for item in all_breeds if item['name'] in [f for f in finds]]
+        except Exception as e:
+            print(e)
+
+    return render_template('photo.html', breeds=breeds)
 
 @application.route('/discover')
 def discover():

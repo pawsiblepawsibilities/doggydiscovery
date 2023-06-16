@@ -2,3 +2,4 @@ venv
 doggy.zip
 .idea
 ./model/variables/variables.data-00000-of-00001
+../__pycache__/
