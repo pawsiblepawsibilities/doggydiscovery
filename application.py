@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import json
-import predict
+# import predict
 import os
 
 application = Flask(__name__)
@@ -81,18 +81,17 @@ def gallery():
 @application.route('/photo', methods=['POST', 'GET'])
 def photo():
     breeds = []
-    if 'image' in request.files:
-        try:
-            image = request.files['image']
-            basepath = os.path.dirname(__file__)
-            filepath = os.path.join(basepath, 'static', 'temp.jpg')
-            image.save(filepath)
-            finds = [predict.top_predictions(filepath)]
-            all_breeds = json.load(open('data/breeds.json', 'r'))  # read the data and assign it to a variable
-            breeds = [item for item in all_breeds if item['name'] in [f for f in finds]]
-        except Exception as e:
-            print(e)
-
+    # if 'image' in request.files:
+    #     try:
+    #         image = request.files['image']
+    #         basepath = os.path.dirname(__file__)
+    #         filepath = os.path.join(basepath, 'static', 'temp.jpg')
+    #         image.save(filepath)
+    #         finds = [predict.top_predictions(filepath)]
+    #         all_breeds = json.load(open('data/breeds.json', 'r'))  # read the data and assign it to a variable
+    #         breeds = [item for item in all_breeds if item['name'] in [f for f in finds]]
+    #     except Exception as e:
+    #         print(e)
     return render_template('photo.html', breeds=breeds)
 
 @application.route('/discover')
